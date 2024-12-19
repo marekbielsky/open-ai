@@ -23,11 +23,18 @@ function App() {
       <div className="chat-container">
         <div className="messages">
           {messages.map((msg, index) => (
-            <div
-              key={index}
-              className={`message ${msg.isUser ? 'user-message' : 'ai-message'}`}
-            >
-              {msg.content}
+            <div key={index} className="message-container">
+              {!msg.isUser && (
+                <img src="/openai-2.svg" alt="AI Logo" className="message-logo" />
+              )}
+              <div
+                className={`message ${msg.isUser ? 'user-message' : 'ai-message'}`}
+              >
+                {msg.content}
+              </div>
+              {msg.isUser && (
+                <img src="/exlabs_logo.svg" alt="Exlabs Logo" className="message-logo" />
+              )}
             </div>
           ))}
         </div>
