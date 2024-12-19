@@ -17,9 +17,6 @@ export class ChatGateway {
 
   @SubscribeMessage('message')
   handleMessage(@MessageBody() message: string): void {
-    console.log('Received message:', message);
-
-    // Echo back the exact message received
     this.server.emit('message', message);
   }
 }

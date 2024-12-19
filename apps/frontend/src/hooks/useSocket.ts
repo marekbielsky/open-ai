@@ -10,7 +10,6 @@ export function useSocket() {
     setSocket(socketInstance);
 
     socketInstance.on('message', (message: string) => {
-      console.log('Received message:', message);
       setMessages((prev) => [...prev, message]);
     });
 
@@ -21,7 +20,6 @@ export function useSocket() {
 
   const sendMessage = useCallback((message: string) => {
     if (socket) {
-      console.log('Sending message:', message);
       socket.emit('message', message);
     }
   }, [socket]);
