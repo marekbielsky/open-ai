@@ -42,44 +42,54 @@
 }
 
 .chat-container {
-  max-width: 600px;
+  max-width: 800px;
+  min-width: 600px;
   margin: 20px auto;
-  padding: 20px;
+  padding: 30px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .messages {
   color: #000;
-  height: 300px;
+  flex: 1;
   overflow-y: auto;
   margin-bottom: 20px;
-  padding: 10px;
+  padding: 20px;
   border: 1px solid #eee;
   border-radius: 4px;
 }
 
 .message {
-  padding: 8px;
-  margin: 4px 0;
+  padding: 12px;
+  margin: 8px 0;
   background-color: #f0f0f0;
   border-radius: 4px;
+  text-align: right;
+  margin-left: auto;
+  max-width: 70%;
 }
 
 form {
   display: flex;
-  gap: 10px;
+  gap: 15px;
+  padding: 10px 0;
 }
 
 input {
   flex: 1;
-  padding: 8px;
+  padding: 12px;
+  font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
 button {
-  padding: 8px 16px;
+  padding: 12px 24px;
+  font-size: 16px;
   background-color: #0066cc;
   color: white;
   border: none;
