@@ -2,6 +2,8 @@
 
 A real-time chat application with OpenAI integration, built with React, NestJS, and WebSockets.
 
+![Exlabs AI Chat Preview](./assets/app-preview.png)
+
 ## Prerequisites
 
 - Node.js (v18 or higher)

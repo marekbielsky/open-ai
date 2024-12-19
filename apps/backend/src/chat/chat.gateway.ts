@@ -22,9 +22,9 @@ export class ChatGateway {
   async handleMessage(@MessageBody() message: string): Promise<void> {
     this.server.emit('message', message);
 
-    let fullResponse = '';
-    for await (const token of this.chatService.generateStreamResponse(message)) {
-      fullResponse += token;
+    for await (const token of this.chatService.generateStreamResponse(
+      message,
+    )) {
       this.server.emit('token', { token, isComplete: false });
     }
     this.server.emit('token', { token: '', isComplete: true });
