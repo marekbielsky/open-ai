@@ -22,7 +22,11 @@ export class ChatGateway {
   async handleMessage(@MessageBody() message: string): Promise<void> {
     this.server.emit('message', message);
 
-    const aiResponse = await this.chatService.generateResponse(message);
-    this.server.emit('message', aiResponse);
+    let fullResponse = '';
+    for await (const token of this.chatService.generateStreamResponse(message)) {
+      fullResponse += token;
+      this.server.emit('token', { token, isComplete: false });
+    }
+    this.server.emit('token', { token: '', isComplete: true });
   }
 }

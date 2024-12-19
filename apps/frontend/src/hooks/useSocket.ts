@@ -21,6 +21,25 @@ export function useSocket() {
       }
     });
 
+    let currentAiMessage = '';
+    
+    socketInstance.on('token', ({ token, isComplete }) => {
+      if (isComplete) {
+        currentAiMessage = '';
+      } else {
+        currentAiMessage += token;
+        setMessages((prev) => {
+          const newMessages = [...prev];
+          if (newMessages.length > 0 && !newMessages[newMessages.length - 1].isUser) {
+            newMessages[newMessages.length - 1].content = currentAiMessage;
+          } else {
+            newMessages.push({ content: currentAiMessage, isUser: false });
+          }
+          return newMessages;
+        });
+      }
+    });
+
     return () => {
       socketInstance.disconnect();
     };

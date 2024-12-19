@@ -12,17 +12,23 @@ export class ChatService {
     });
   }
 
-  async generateResponse(message: string): Promise<string> {
+  async *generateStreamResponse(message: string) {
     try {
-      const completion = await this.openai.chat.completions.create({
+      const stream = await this.openai.chat.completions.create({
         messages: [{ role: 'user', content: message }],
         model: 'gpt-3.5-turbo',
+        stream: true,
       });
 
-      return completion.choices[0].message.content || 'No response generated';
+      for await (const chunk of stream) {
+        const content = chunk.choices[0]?.delta?.content;
+        if (content) {
+          yield content;
+        }
+      }
     } catch (error) {
       console.error('OpenAI API error:', error);
-      return 'Sorry, I encountered an error processing your request.';
+      yield 'Sorry, I encountered an error processing your request.';
     }
   }
 }
