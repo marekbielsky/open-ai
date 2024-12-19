@@ -16,7 +16,10 @@ function App() {
 
   return (
     <>
-      <h1>Simple Chat</h1>
+      <div className="header">
+        <img src="/exlabs_logo.svg" alt="Exlabs Logo" className="logo" />
+        <h1>Exlabs AI Chat</h1>
+      </div>
       <div className="chat-container">
         <div className="messages">
           {messages.map((msg, index) => (
