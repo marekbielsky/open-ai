@@ -15,7 +15,7 @@ A real-time chat application with OpenAI integration, built with React, NestJS, 
 1. **Clone the repository**:
 
    ```bash
-   git clone <repository-url>
+   git clone [<repository-url>](https://github.com/marekbielsky/open-ai)
    cd open-ai
    ```
 
