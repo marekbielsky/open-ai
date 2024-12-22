@@ -5,8 +5,10 @@ import OpenAI from 'openai';
 @Injectable()
 export class ChatService {
   private openai: OpenAI;
+  private configService: ConfigService;
 
-  constructor(private configService: ConfigService) {
+  constructor(configService: ConfigService) {
+    this.configService = configService;
     this.openai = new OpenAI({
       apiKey: this.configService.get<string>('OPENAI_API_KEY'),
     });

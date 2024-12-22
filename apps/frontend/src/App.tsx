@@ -1,18 +1,18 @@
-import { useState } from 'react'
-import { useSocket } from './hooks/useSocket'
-import './App.css'
+import { useState } from 'react';
+import { useSocket } from './hooks/useSocket';
+import './App.css';
 
 function App() {
-  const [newMessage, setNewMessage] = useState('')
-  const { messages, sendMessage } = useSocket()
+  const [newMessage, setNewMessage] = useState('');
+  const { messages, sendMessage } = useSocket();
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (newMessage.trim()) {
-      sendMessage(newMessage)
-      setNewMessage('')
+      sendMessage(newMessage);
+      setNewMessage('');
     }
-  }
+  };
 
   return (
     <>
@@ -49,7 +49,7 @@ function App() {
         </form>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

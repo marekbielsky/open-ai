@@ -7,7 +7,8 @@
   "scripts": {
     "start:dev": "turbo run start:dev",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint \"apps/**/*.{ts,tsx}\" --max-warnings 0"
+    "lint": "eslint \"apps/**/*.{ts,tsx}\" --max-warnings 0",
+    "lint:fix": "eslint \"apps/**/*.{ts,tsx}\" --fix"
   },
   "keywords": [],
   "author": "",
@@ -15,9 +16,10 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.16.0",
     "@typescript-eslint/parser": "^6.16.0",
-    "eslint": "^8.56.0",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.2",
     "turbo": "^2.3.3",
     "typescript": "^5.3.3"
   },
