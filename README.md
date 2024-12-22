@@ -15,8 +15,8 @@ A real-time chat application with OpenAI integration, built with React, NestJS, 
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/marekbielsky/open-ai
-   cd open-ai
+   git clone https://github.com/marekbielsky/exlabs-ai-chat
+   cd exlabs-ai-chat
    ```
 
 2. **Install dependencies**:
