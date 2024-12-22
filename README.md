@@ -69,8 +69,17 @@ A real-time chat application with OpenAI integration, built with React, NestJS, 
 The project uses Turborepo for monorepo management. Key commands:
 
 - `npm run start:dev` - Start all applications in development mode
-- `npm run build` - Build all applications
 - `npm run lint` - Run linting across all applications
+
+## Build
+
+To build all applications, run the following command:
+
+```bash
+npm run build
+```
+
+**Note**: The build process is currently mocked and will simply output a message. The actual build steps will be implemented in the future.
 
 ## License
 

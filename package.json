@@ -8,7 +8,8 @@
     "start:dev": "turbo run start:dev",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint \"apps/**/*.{ts,tsx}\" --max-warnings 0",
-    "lint:fix": "eslint \"apps/**/*.{ts,tsx}\" --fix"
+    "lint:fix": "eslint \"apps/**/*.{ts,tsx}\" --fix",
+    "build": "echo \"Building all applications...\""
   },
   "keywords": [],
   "author": "",
