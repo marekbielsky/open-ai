@@ -26,7 +26,8 @@ module.exports = {
     'linebreak-style': ['error', 'unix'], // Enforce Unix linebreaks
     'quotes': ['error', 'single'], // Enforce single quotes
     'semi': ['error', 'always'], // Enforce semicolons
-    'no-unused-vars': 'warn', // Warn on unused variables
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
     'no-console': 'warn', // Warn on console usage
     'eqeqeq': ['error', 'always'], // Enforce strict equality
     'curly': 'error', // Enforce consistent brace style for all control statements

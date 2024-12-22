@@ -5,6 +5,7 @@ import {
   WebSocketServer,
 } from '@nestjs/websockets';
 import { Server } from 'socket.io';
+import { ChatService } from './chat.service';
 
 @WebSocketGateway({
   cors: {
@@ -12,7 +13,7 @@ import { Server } from 'socket.io';
   },
 })
 export class ChatGateway {
-  constructor() {}
+  constructor(private chatService: ChatService) {}
 
   @WebSocketServer()
     server: Server;

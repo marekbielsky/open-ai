@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import OpenAI from 'openai';
 
@@ -6,6 +6,7 @@ import OpenAI from 'openai';
 export class ChatService {
   private openai: OpenAI;
   private configService: ConfigService;
+  private readonly logger = new Logger(ChatService.name);
 
   constructor(configService: ConfigService) {
     this.configService = configService;
@@ -29,7 +30,7 @@ export class ChatService {
         }
       }
     } catch (error) {
-      console.error('OpenAI API error:', error);
+      this.logger.error('OpenAI API error:', error);
       yield 'Sorry, I encountered an error processing your request.';
     }
   }
