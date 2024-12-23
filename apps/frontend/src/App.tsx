@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSocket } from './hooks/useSocket';
-import  { Converter } from 'showdown';
+import markdownit from 'markdown-it';
 import parse from 'html-react-parser'
 import './App.css';
 
 function App() {
-  const converter = new Converter();
+  const md = markdownit({breaks: true});
   const [newMessage, setNewMessage] = useState('');
   const { messages, sendMessage, report } = useSocket();
 
@@ -53,7 +53,7 @@ function App() {
           </form>
         </div>
         <div className="report-container">
-          {report === '' ? 'Your report will appear here...' : parse(converter.makeHtml(report))}
+          {report === '' ? 'Your report will appear here...' : parse(md.render(report))}
         </div>
       </div>
     </>
