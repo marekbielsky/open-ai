@@ -22,11 +22,22 @@ export class ChatGateway {
   async handleMessage(@MessageBody() message: string): Promise<void> {
     this.server.emit('message', message);
 
+    let isGeneratingReport = false;
+
     for await (const token of this.chatService.generateStreamResponse(
       message,
     )) {
-      this.server.emit('token', { token, isComplete: false });
+      if(!isGeneratingReport) {
+        if(token.includes('~~~~')) {
+          isGeneratingReport = true;
+          this.server.emit('conversation', { token: '', isComplete: true });
+        } else {
+          this.server.emit('conversation', { token, isComplete: false });
+        }
+      } else {
+        this.server.emit('report', { token, isComplete: false });
+      }
     }
-    this.server.emit('token', { token: '', isComplete: true });
+    this.server.emit('report', { token: '', isComplete: true });
   }
 }

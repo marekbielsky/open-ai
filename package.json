@@ -26,5 +26,9 @@
   },
   "workspaces": [
     "apps/*"
-  ]
+  ],
+  "dependencies": {
+    "html-react-parser": "^5.2.1",
+    "showdown": "^2.1.0"
+  }
 }

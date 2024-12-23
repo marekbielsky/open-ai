@@ -119,3 +119,18 @@ button:hover {
   margin: 0;
   font-size: 28px;
 }
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.report-container {
+  min-width: 600px;
+  margin: 20px auto;
+  padding: 30px;
+  border: 1px solid #2c2c2c;
+  border-radius: 8px;
+  height: 80vh;
+}
