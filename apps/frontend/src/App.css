@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  max-width: 1680px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -118,4 +118,44 @@ button:hover {
   color: white;
   margin: 0;
   font-size: 28px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.report-container {
+  min-width: 600px;
+  margin: 20px auto;
+  padding: 30px;
+  border: 1px solid #2c2c2c;
+  border-radius: 8px;
+  height: 80vh;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #2c2c2c;
+  text-align: left;
+}
+
+th {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #242424;
+}
+
+tr:hover {
+  background-color: #333;
 }

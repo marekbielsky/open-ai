@@ -16,17 +16,39 @@ export class ChatGateway {
   constructor(private chatService: ChatService) {}
 
   @WebSocketServer()
-    server: Server;
+  server: Server;
 
   @SubscribeMessage('message')
   async handleMessage(@MessageBody() message: string): Promise<void> {
     this.server.emit('message', message);
+    await this.processTokens(this.chatService.generateStreamResponse(message));
+  }
 
-    for await (const token of this.chatService.generateStreamResponse(
-      message,
-    )) {
-      this.server.emit('token', { token, isComplete: false });
+  @SubscribeMessage('start')
+  async handleStart(): Promise<void> {
+    await this.processTokens(this.chatService.startConnection());
+  }
+
+  private async processTokens(
+    tokenStream: AsyncIterable<string>,
+  ): Promise<void> {
+    let isGeneratingReport = false;
+
+    for await (const token of tokenStream) {
+      if (!isGeneratingReport) {
+        if (token.includes('~~~~')) {
+          isGeneratingReport = true;
+          this.server.emit('conversation', { token: '', isComplete: true });
+        } else {
+          this.server.emit('conversation', { token, isComplete: false });
+        }
+      } else {
+        this.server.emit('report', { token, isComplete: false });
+      }
     }
-    this.server.emit('token', { token: '', isComplete: true });
+    
+    if (isGeneratingReport) {
+      this.server.emit('report', { token: '', isComplete: true });
+    }
   }
 }
