@@ -26,12 +26,5 @@
   },
   "workspaces": [
     "apps/*"
-  ],
-  "dependencies": {
-    "html-react-parser": "^5.2.1",
-    "markdown-it": "^14.1.0",
-    "react-router": "^7.1.1",
-    "showdown": "^2.1.0",
-    "uuid": "^11.0.3"
-  }
+  ]
 }
