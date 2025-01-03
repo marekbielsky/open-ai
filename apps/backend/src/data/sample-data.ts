@@ -1,20 +1,3 @@
-export const user = {
-  country_of_residence: '',
-  linkedin_url: 'https://www.linkedin.com/in/pavel-gertsberg/',
-  founded: 'May 22, 2021, 9:48 AM',
-  founder_first_name: 'Pavel',
-  about:
-    '{"blocks":[{"key":"99749136-9d09-43fd-b8ab-4f2e4db8a608","text":"Here at Strelka, we\'re creating a digital alternative to an outdated pet sector ranging from training to health to nutrition. After identifying dog training as the biggest challenge for new pet owners, we launched our first product - Strelka Training - the first personalised, community-driven dog training app. \\n","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}',
-  business_name: 'Strelka',
-  customer_group: '{B2C,B2B2C}',
-  id: 'f39dff83-b922-47e3-942a-2588b2b28071',
-  industry: '{"Animal Welfare"}',
-  achievements:
-    '{"blocks":[{"key":"ae451f48-b527-4465-b878-cd80efcf2b97","text":"🚀 We launched the app in August this year and within one month we got over 1k organic downloads and we\'re now on 5k downloads.\\n😊 23.5% 7-day retention (double of the 7-day average for learning apps) \\n❤ 70%+ NPS score","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}',
-  founder_last_name: 'Gertsberg',
-  product_stage: 'MVP',
-};
-
 export const metrics = `
 Quarter,Revenue (in billion USD),Cost of Revenue (in billion USD),Gross Profit (in billion USD),Operating Expenses (in billion USD),Operating Income (in billion USD),Net Income (in billion USD),EPS (in USD),Free Cash Flow (in billion USD),R&D Expenses (in billion USD),Sales & Marketing Expenses (in billion USD),General & Admin Expenses (in billion USD),MAU (in billion),DAU (in billion),ARPU (in USD),Engagement Rate (%),Total Ad Impressions (in billion),CTR (%),Customer Satisfaction (CSAT) Score,Churn Rate (%),Customer Acquisition Cost (CAC in USD),Net Promoter Score (NPS),Employee Count,Return on Equity (ROE),Total Assets (in billion USD),Total Liabilities (in billion USD),Equity (in billion USD)
 Q3 2024,33.1,8.2,24.9,14.3,10.6,9.9,3.40,11.9,4.9,3.8,1.5,3.00,1.96,10.89,66.0,700,1.2,78,3.1,44,62,86,80,190.8,86.0,104.8

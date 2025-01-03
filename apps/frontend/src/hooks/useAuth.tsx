@@ -1,6 +1,6 @@
-import { createContext, useContext, useMemo } from "react";
-import { useNavigate } from "react-router";
-import { useLocalStorage } from "./useLocalStorage";
+import { createContext, useContext, useMemo } from 'react';
+import { useNavigate } from 'react-router';
+import { useLocalStorage } from './useLocalStorage';
 const AuthContext = createContext<AuthContextType>(null);
 
 type ProfileResponse = {
@@ -15,14 +15,12 @@ type AuthContextType = {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useLocalStorage("user", null);
+  const [user, setUser] = useLocalStorage('user', null);
   const navigate = useNavigate();
 
   // call this function when you want to authenticate the user
   const login = async (company: string ) => {
     try {
-      console.log('login company', company);
-
       // Login endpoint
       const loginResponse = await fetch('http://localhost:3000/api/auth/login', {
         method: 'POST',
@@ -60,7 +58,7 @@ export const AuthProvider = ({ children }) => {
         token: access_token,
       });
 
-      navigate("/chat");
+      navigate('/chat');
     } catch (error) {
       console.error('Error:', error);
     }
@@ -69,7 +67,7 @@ export const AuthProvider = ({ children }) => {
   // call this function to sign out logged in user
   const logout = () => {
     setUser(null);
-    navigate("/", { replace: true });
+    navigate('/', { replace: true });
   };
 
   const value = useMemo(

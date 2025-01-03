@@ -1,5 +1,5 @@
-import {Navigate, useOutlet} from "react-router";
-import {useAuth} from "../../hooks/useAuth.tsx";
+import {Navigate, useOutlet} from 'react-router';
+import {useAuth} from '../../hooks/useAuth.tsx';
 
 const ProtectedLayout = () => {
   const { user } = useAuth();

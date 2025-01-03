@@ -1,5 +1,5 @@
-import {useAuth} from "../../hooks/useAuth.tsx";
-import {useState} from "react";
+import {useAuth} from '../../hooks/useAuth.tsx';
+import {useState} from 'react';
 import './login.css';
 
 function Login() {
@@ -25,9 +25,9 @@ function Login() {
     'Lounges.tv Ltd',
     'Ocushield',
     'Infranomics'
-  ]
+  ];
 
-  const [company, setCompany] = useState("")
+  const [company, setCompany] = useState('');
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -40,7 +40,7 @@ function Login() {
       <form onSubmit={handleLogin}>
         <h2>Login to your account</h2>
         <div>
-          <select onChange={e => {setCompany(e.target.value)}}>
+          <select onChange={e => {setCompany(e.target.value);}}>
             <option disabled selected>Select company</option>
             {companies.map((company) => (<option value={company} key={company}>{company}</option>))}
           </select>

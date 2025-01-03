@@ -1,5 +1,5 @@
 import {Link, Outlet} from 'react-router';
-import {useAuth} from "./hooks/useAuth.tsx";
+import {useAuth} from './hooks/useAuth.tsx';
 
 function Layout() {
   const { user, logout } = useAuth();

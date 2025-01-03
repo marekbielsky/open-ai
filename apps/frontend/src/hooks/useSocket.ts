@@ -1,40 +1,49 @@
-import { useEffect, useCallback, useState } from "react";
-import { io, Socket } from "socket.io-client";
+import { useEffect, useCallback, useState } from 'react';
+import { io, Socket } from 'socket.io-client';
+import {useAuth} from './useAuth.tsx';
 
 interface ChatMessage {
   content: string;
   isUser: boolean;
 }
 
-export function useSocket() {
+export function useSocket(reportId: string) {
   const [socket, setSocket] = useState<Socket | null>(null);
   const [initialMessageSent, setInitialMessageSent] = useState<boolean>(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [report, setReport] = useState<string>("");
-  const [lastUserMessage, setLastUserMessage] = useState<string>("");
+  const [report, setReport] = useState<string>('');
+  const [lastUserMessage, setLastUserMessage] = useState<string>('');
+
+  const { user } = useAuth();
 
   useEffect(() => {
+    console.log('Connecting to socket', user.token);
+    const socketInstance = io('http://localhost:3000', {
+      query: { reportId },
+      extraHeaders: {
+        Authorization: `Bearer ${user.token}`
+      }
+    });
 
-    const socketInstance = io("http://localhost:3000");
     if (!initialMessageSent) {
       setInitialMessageSent(true);
-      socketInstance.emit("start");
+      socketInstance.emit('start');
     }
-    setReport("");
+    setReport('');
 
     setSocket(socketInstance);
 
-    socketInstance.on("message", (message: string) => {
+    socketInstance.on('message', (message: string) => {
       if (message !== lastUserMessage) {
         setMessages((prev) => [...prev, { content: message, isUser: false }]);
       }
     });
 
-    let currentAiConversationMessage = "";
+    let currentAiConversationMessage = '';
 
-    socketInstance.on("conversation", ({ token, isComplete }) => {
+    socketInstance.on('conversation', ({ token, isComplete }) => {
       if (isComplete) {
-        currentAiConversationMessage = "";
+        currentAiConversationMessage = '';
       } else {
         currentAiConversationMessage += token;
         setMessages((prev) => {
@@ -56,7 +65,7 @@ export function useSocket() {
       }
     });
 
-    socketInstance.on("report", ({ token, isComplete }) => {
+    socketInstance.on('report', ({ token, isComplete }) => {
       if (isComplete) {
         //
       } else {
@@ -67,13 +76,13 @@ export function useSocket() {
     return () => {
       socketInstance.disconnect();
     };
-  }, [lastUserMessage]);
+  }, [lastUserMessage, user]);
 
   const sendMessage = useCallback(
     (message: string) => {
       if (socket) {
         setLastUserMessage(message);
-        socket.emit("message", message);
+        socket.emit('message', message);
         setMessages((prev) => [
           ...prev,
           { content: message, isUser: true, isReport: false },

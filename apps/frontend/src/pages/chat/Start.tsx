@@ -1,6 +1,6 @@
-import {Link} from "react-router";
-import {v4} from "uuid";
-import {useAuth} from "../../hooks/useAuth.tsx";
+import {Link} from 'react-router';
+import {v4} from 'uuid';
+import {useAuth} from '../../hooks/useAuth.tsx';
 
 function Start() {
   const { user } = useAuth();

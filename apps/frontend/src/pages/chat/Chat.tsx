@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { useSocket } from '../../hooks/useSocket.ts';
 import markdownit from 'markdown-it';
-import parse from 'html-react-parser'
+import parse from 'html-react-parser';
 import './Chat.css';
-import {useParams} from "react-router";
+import {useParams} from 'react-router';
 
 function Chat() {
   const { chatId} = useParams();
 
   const md = markdownit({breaks: true});
   const [newMessage, setNewMessage] = useState('');
-  const { messages, sendMessage, report } = useSocket();
+  const { messages, sendMessage, report } = useSocket(chatId);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

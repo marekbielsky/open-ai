@@ -1,6 +1,6 @@
-import {Body, Controller, Get, HttpCode, HttpStatus, Post, UseGuards, Request} from '@nestjs/common';
-import {AuthService} from "./auth.service";
-import {AuthGuard, Public} from "./auth.guard";
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, UseGuards, Request } from '@nestjs/common';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
 
 
 @Controller('auth')
